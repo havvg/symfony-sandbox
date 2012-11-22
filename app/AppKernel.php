@@ -1,7 +1,8 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -32,7 +33,72 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $configDir = __DIR__.'/config';
+
+        /*
+         * Load all globally defined configuration files.
+         */
+        $global = Finder::create()
+            ->files()
+            ->name('*.yml')
+            ->in($configDir)
+            ->depth('< 1')
+        ;
+        /* @var $eachFile \SplFileInfo */
+        foreach ($global as $eachFile) {
+            $loader->load($eachFile->getRealPath());
+        }
+
+        /*
+         * Load all bundle specific configuration files.
+         */
+        $bundles = Finder::create()
+            ->files()
+            ->name('*.yml')
+            ->in($configDir.'/bundles')
+        ;
+        foreach ($bundles as $eachFile) {
+            $loader->load($eachFile->getRealPath());
+        }
+
+        /*
+         * Load all configuration files defining services.
+         */
+        $services = Finder::create()
+            ->files()
+            ->name('*.yml')
+            ->in($configDir.'/services')
+        ;
+        foreach ($services as $eachFile) {
+            $loader->load($eachFile->getRealPath());
+        }
+
+        /*
+         * Populate configuration with global defaults.
+         */
+        $defaultEnv = Finder::create()
+            ->files()
+            ->name('*.yml')
+            ->in($configDir.'/environments')
+            ->depth('< 1')
+        ;
+        foreach ($defaultEnv as $eachFile) {
+            $loader->load($eachFile->getRealPath());
+        }
+
+        /*
+         * Load environment specific configuration.
+         */
+        $envConfigDir = $configDir.'/environments/'.$this->getEnvironment();
+        $loader->load($envConfigDir.'/parameters.yml');
+        $loader->load($envConfigDir.'/config.yml');
+
+        /*
+         * Load optional local environment-specific modifications.
+         */
+        if (file_exists($envConfigDir.'/local.yml')) {
+            $loader->load($envConfigDir.'/local.yml');
+        }
     }
 
     public function getName()

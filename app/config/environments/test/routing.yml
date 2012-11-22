@@ -7,7 +7,7 @@ _profiler:
     prefix:   '/_profiler'
 
 _main:
-    resource: 'default.yml'
+    resource: '../../routing/default.yml'
 
 _assetic:
     resource: '.'

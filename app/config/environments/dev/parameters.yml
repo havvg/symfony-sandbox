@@ -1,6 +1,3 @@
-imports:
-    - { resource: 'parameters.yml' }
-
 parameters:
     log_level: 100
 

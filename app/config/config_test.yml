@@ -1,5 +1,0 @@
-imports:
-    - { resource: 'parameters_test.yml' }
-    - { resource: 'config.yml' }
-    - { resource: 'environments/test.yml' }
-    - { resource: 'config_local_test.yml', ignore_errors: true }

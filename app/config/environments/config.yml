@@ -6,7 +6,7 @@ framework:
         fallback:    'en'
     secret:          '%secret%'
     router:
-        resource: '%kernel.root_dir%/config/routing/%kernel.environment%.yml'
+        resource: '%kernel.root_dir%/config/environments/%kernel.environment%/routing.yml'
     form:            true
     csrf_protection: true
     validation:
