@@ -9,5 +9,7 @@ define('BEHAT_PHP_BIN_PATH', getenv('PHP_PEAR_PHP_BIN') ?: '/usr/bin/env php');
 define('BEHAT_BIN_PATH',     __FILE__);
 define('BEHAT_VERSION',      'DEV');
 
+require_once __DIR__.'/../features/bootstrap/FeatureContext.php';
+
 $app = new Behat\Behat\Console\BehatApplication(BEHAT_VERSION);
 $app->run();
