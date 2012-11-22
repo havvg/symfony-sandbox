@@ -1,0 +1,18 @@
+{% trans_default_domain "registration" %}
+{%- spaceless -%}
+    <button type="submit" class="btn btn-success btn-large pull-right">
+        {%- if flow.getCurrentStep() < flow.getLastStep() -%}
+            {{- 'form_actions.next'|trans({ '%step%': flow.getCurrentStep() + 1 }) -}}
+            &nbsp;<i class="icon-circle-arrow-right"></i>
+        {%- else -%}
+            {{- 'form_actions.final'|trans -}}
+        {%- endif -%}
+    </button>
+
+    {%- if flow.getCurrentStep() in (flow.getFirstStep() + 1) .. flow.getLastStep() -%}
+        <button type="submit" class="btn btn-large pull-left" name="{{ flow.getFormTransitionKey() }}" value="back" formnovalidate>
+            <i class="icon-circle-arrow-left"></i>&nbsp;
+            {{- 'form_actions.back'|trans -}}
+        </button>
+    {%- endif -%}
+{%- endspaceless -%}

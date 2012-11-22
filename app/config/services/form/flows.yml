@@ -1,0 +1,7 @@
+services:
+    form.flow.registration:
+        class: Registration\FormFlow
+        parent: 'craue.form.flow'
+        scope: 'request'
+        calls:
+            - [ 'setFormType', [ '@form.type.registration' ] ]

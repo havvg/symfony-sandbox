@@ -1,0 +1,42 @@
+<?php
+
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Craue\FormFlowBundle\CraueFormFlowBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Havvg\Bundle\DRYBundle\HavvgDRYBundle(),
+        );
+
+        if (in_array($this->getEnvironment(), array('dev', 'test', 'test_functional'))) {
+            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+        }
+
+        return $bundles;
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    public function getName()
+    {
+        return "Sandbox";
+    }
+}

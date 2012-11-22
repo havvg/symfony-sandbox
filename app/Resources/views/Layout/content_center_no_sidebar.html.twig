@@ -1,0 +1,11 @@
+<div class="row-fluid">
+    {% if content_width is not defined %}
+        {% set content_width = 8 %}
+    {% endif %}
+    {% if content_offset is not defined %}
+        {% set content_offset = 2 %}
+    {% endif %}
+    <div class="span{{ content_width }} offset{{ content_offset }}">
+        {% block content %}{% endblock %}
+    </div>
+</div>

@@ -1,0 +1,9 @@
+imports:
+    - { resource: 'parameters.yml' }
+
+parameters:
+    log_level: 100
+
+    database_host: 'localhost'
+    database_name: 'symfony2-sandbox'
+    database_user: 'symfony2-sandbox'

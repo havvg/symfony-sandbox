@@ -1,0 +1,4 @@
+{% set jsonp = app.request.query.get('jsonp') %}
+{% if jsonp %}{{ jsonp }}({% endif %}
+{% block data %}{% if is_json|default(false) %}{{ data|raw }}{% else %}{{ data|json_encode|raw }}{% endif %}{% endblock %}
+{% if jsonp %});{% endif %}

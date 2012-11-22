@@ -1,0 +1,24 @@
+form_actions:
+    back: "Back"
+    final: "Complete Registration"
+    next: "Next"
+
+label:
+    account:
+        email: "Your Login"
+        password: "Password"
+        password_repeat: "Confirmation"
+
+    address:
+        city: "City"
+        street: "Street"
+        zipcode: "Zipcode"
+
+    terms_and_conditions:
+        terms: "Accept Terms and Conditions"
+        privacy: "Accept Privacy Policy"
+
+legend:
+    account: "Your account information"
+    address: "Your billing address"
+    confirmation: "Our Terms and Conditions"

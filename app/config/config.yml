@@ -1,0 +1,7 @@
+imports:
+    - { resource: 'security.yml' }
+    - { resource: 'services.yml' }
+    - { resource: 'bundles/knp_gaufrette.yml' }
+    - { resource: 'bundles/knp_paginator.yml' }
+    - { resource: 'bundles/mopa_bootstrap.yml' }
+    - { resource: 'environments/default.yml' }

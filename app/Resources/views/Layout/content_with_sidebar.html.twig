@@ -1,0 +1,14 @@
+<div class="row-fluid">
+    {% if content_width is not defined %}
+        {% set content_width = 8 %}
+    {% endif %}
+    <div class="span{{ content_width }}">
+        {% block content %}{% endblock %}
+    </div>
+    {% if sidebar_width is not defined %}
+        {% set sidebar_width = 4 %}
+    {% endif %}
+    <div class="span{{ sidebar_width }} sidebar">
+        {% block sidebar %}{% endblock %}
+    </div>
+</div>

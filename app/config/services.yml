@@ -1,0 +1,7 @@
+imports:
+    - { resource: 'services/global.yml' }
+    - { resource: 'services/controller.yml' }
+    - { resource: 'services/menu.yml' }
+    - { resource: 'services/form/type_extensions.yml' }
+    - { resource: 'services/form/types.yml' }
+    - { resource: 'services/form/flows.yml' }

@@ -1,0 +1,6 @@
+{% extends '::base.json.twig' %}
+
+{% block data %}[{% for item in collection %}
+{% render item_route with { (route_param): item, '_locale': app.request.locale }, { 'standalone': true } %}
+{% if not loop.last %},{% endif %}
+{% endfor %}]{% endblock %}

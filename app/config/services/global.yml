@@ -1,0 +1,7 @@
+services:
+    connection.pdo:
+        class: PDO
+        arguments:
+            - '%database_dsn%'
+            - '%database_user%'
+            - '%database_password%'

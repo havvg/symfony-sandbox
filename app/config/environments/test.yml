@@ -1,0 +1,24 @@
+framework:
+    test: true
+    profiler:
+        only_exceptions: false
+    session:
+        storage_id: 'session.storage.native'
+        handler_id: 'session.handler.native_file'
+
+assetic:
+    debug:          false
+    use_controller: true
+    filters:
+        less:
+            node: '/usr/local/bin/node'
+            node_paths:
+                - '/usr/local/lib/node'
+                - '/usr/local/lib/node_modules'
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true

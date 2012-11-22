@@ -1,0 +1,15 @@
+parameters:
+    knp_paginator.page_name: 'page'
+    knp_paginator.sort_field_name: 'sort'
+    knp_paginator.sort_direction_name: 'dir'
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name:           '%knp_paginator.page_name%'
+        sort_field_name:     '%knp_paginator.sort_field_name%'
+        sort_direction_name: '%knp_paginator.sort_direction_name%'
+        distinct: true
+    template:
+        pagination: ':Pagination:sliding.html.twig'
+        sortable: ':Pagination:sortable_table_head.html.twig'

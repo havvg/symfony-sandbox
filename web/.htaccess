@@ -1,0 +1,19 @@
+Options +FollowSymLinks +ExecCGI
+
+<Files ~ "\.(gif|jpe?g|png|js|css)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "Public"
+  </IfModule>
+  FileETag -INode -MTime +Size
+</Files>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # remove trailing slash
+    RewriteCond %{REQUEST_URI} ^(.*)/$
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ app.php [QSA,L]
+</IfModule>

@@ -1,0 +1,7 @@
+{% if key in sortFieldWhitelist|default([ key ]) %}
+    <th class="sortable{% if sorted %} sorted {{ options.class }}{% endif %}">
+        <a href="{{ options.href }}">{{ title }}</a>
+    </th>
+{% else %}
+    <th>{{ title }}</th>
+{% endif %}

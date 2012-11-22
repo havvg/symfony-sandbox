@@ -1,0 +1,14 @@
+registration:
+    pattern: "/register"
+    defaults:
+        _controller: 'controller.registration:register'
+
+welcome:
+    pattern: "/"
+    defaults:
+        _controller: 'controller.welcome:index'
+
+# Internal routing configuration to handle ESI
+_internal:
+    resource: '@FrameworkBundle/Resources/config/routing/internal.xml'
+    prefix:   '/_internal'

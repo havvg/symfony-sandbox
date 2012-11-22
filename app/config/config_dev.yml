@@ -1,0 +1,5 @@
+imports:
+    - { resource: 'parameters_dev.yml' }
+    - { resource: 'config.yml' }
+    - { resource: 'environments/dev.yml' }
+    - { resource: 'config_local.yml', ignore_errors: true }

@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% trans_default_domain "registration" %}
+
+{% block content_layout %}
+<div class="row-fluid">
+    <form class="form-horizontal well well-small span6 offset3" action="{{ path('registration') }}" method="POST" novalidate>
+        {{ form_errors(form) }}
+
+        <fieldset>
+            {% if 1 == flow.currentStep %}
+                {% set key = 'address' %}
+            {% endif %}
+            {% if 2 == flow.currentStep %}
+                {% set key = 'account' %}
+            {% endif %}
+            {% if 3 == flow.currentStep %}
+                {% set key = 'confirmation' %}
+            {% endif %}
+
+            <legend>{{ ('legend.'~key)|trans }}</legend>
+
+            {% for widget in form[key] %}
+                {{ form_row(widget) }}
+            {% endfor %}
+        </fieldset>
+
+        {% include 'CraueFormFlowBundle:FormFlow:stepField.html.twig' %}
+
+        {{ form_rest(form) }}
+
+        <div class="form-actions">
+            {% include ':Registration:buttons.html.twig' %}
+        </div>
+    </form>
+</div>
+{% endblock %}

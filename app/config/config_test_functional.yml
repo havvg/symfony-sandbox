@@ -1,0 +1,5 @@
+imports:
+    - { resource: 'parameters_test.yml' }
+    - { resource: 'config.yml' }
+    - { resource: 'environments/test_functional.yml' }
+    - { resource: 'config_local_test_functional.yml', ignore_errors: true }

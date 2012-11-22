@@ -1,0 +1,20 @@
+services:
+    form.type.address:
+        class: Form\Type\AddressType
+        tags:
+            - { name: 'form.type', alias: 'address' }
+
+    form.type.account:
+        class: Form\Type\AccountType
+        tags:
+            - { name: 'form.type', alias: 'account' }
+
+    form.type.terms_and_conditions:
+        class: Form\Type\TermsAndConditionsType
+        tags:
+            - { name: 'form.type', alias: 'terms_and_conditions' }
+
+    form.type.registration:
+        class: Form\Type\RegistrationType
+        tags:
+            - { name: 'form.type', alias: 'registration' }
