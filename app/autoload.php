@@ -16,6 +16,7 @@ $loader->registerNamespaces(array(
     'Knp\Menu'         => __DIR__.'/../vendor/KnpMenu/src',
     'Knp\Component'    => __DIR__.'/../vendor/knp-components/src',
     'Imagine'          => __DIR__.'/../vendor/Imagine/lib',
+    'Propel'           => __DIR__.'/../vendor/Propel2/src',
 
     // Behat
     'Behat\Gherkin'    => __DIR__.'/../vendor/behat/gherkin/src',

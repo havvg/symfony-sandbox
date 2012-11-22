@@ -5,10 +5,14 @@ services:
         calls:
             - [ 'setContainer', [ '@service_container' ] ]
 
-    controller.welcome:
-        class: 'Controller\WelcomeController'
-        parent: 'controller.abstract'
-
     controller.registration:
         class: 'Controller\RegistrationController'
+        parent: 'controller.abstract'
+
+    controller.security:
+        class: 'Controller\SecurityController'
+        parent: 'controller.abstract'
+
+    controller.welcome:
+        class: 'Controller\WelcomeController'
         parent: 'controller.abstract'

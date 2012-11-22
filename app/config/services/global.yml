@@ -5,3 +5,6 @@ services:
             - '%database_dsn%'
             - '%database_user%'
             - '%database_password%'
+
+    security.user_provider.propel:
+        class: Security\PropelUserProvider

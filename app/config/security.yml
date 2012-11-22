@@ -5,6 +5,10 @@ security:
 
     encoders:
         Symfony\Component\Security\Core\User\User: 'plaintext'
+        Model\User:
+            algorithm: sha512
+            encode_as_base64: true
+            iterations: 5000
 
     role_hierarchy:
         ROLE_ADMIN:
@@ -15,11 +19,23 @@ security:
             - 'ROLE_ALLOWED_TO_SWITCH'
 
     providers:
+# Currently not working ..
+#        propel:
+#            id: 'security.user_provider.propel'
+
         in_memory:
             memory:
                 users:
-                    user: { password: 'userpass', roles: [ 'ROLE_USER' ] }
-                    admin: { password: 'adminpass', roles: [ 'ROLE_ADMIN' ] }
+                    user:
+                        name: "user@example.com"
+                        password: 'userpass'
+                        roles:
+                            - 'ROLE_USER'
+                    admin:
+                        name: "admin@example.com"
+                        password: 'adminpass'
+                        roles:
+                            - 'ROLE_ADMIN'
 
     firewalls:
         dev:

@@ -9,12 +9,17 @@ services:
         tags:
             - { name: 'form.type', alias: 'account' }
 
-    form.type.terms_and_conditions:
-        class: Form\Type\TermsAndConditionsType
+    form.type.login:
+        class: Form\Type\LoginType
         tags:
-            - { name: 'form.type', alias: 'terms_and_conditions' }
+            - { name: 'form.type', alias: 'login' }
 
     form.type.registration:
         class: Form\Type\RegistrationType
         tags:
             - { name: 'form.type', alias: 'registration' }
+
+    form.type.terms_and_conditions:
+        class: Form\Type\TermsAndConditionsType
+        tags:
+            - { name: 'form.type', alias: 'terms_and_conditions' }

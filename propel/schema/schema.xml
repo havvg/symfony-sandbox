@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database name="default" namespace="Model">
+    <table name="users" phpName="User">
+        <column name="id" primaryKey="true" autoIncrement="true" type="INTEGER" />
+        <column name="email" type="varchar" size="255" primaryString="true" />
+        <column name="password" type="varchar" size="255" />
+        <column name="salt" type="varchar" size="255" />
+        <column name="roles" type="array" />
+
+        <behavior name="timestampable" />
+    </table>
+</database>

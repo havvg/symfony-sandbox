@@ -1,3 +1,7 @@
+_security:
+    resource: 'security.yml'
+    prefix: "/"
+
 registration:
     pattern: "/register"
     defaults:

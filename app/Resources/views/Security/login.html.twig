@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block content_layout %}
+{% embed ':Layout:content_center_no_sidebar.html.twig' %}
+    {% from 'MopaBootstrapBundle::icons.html.twig' import icon %}
+    {% block content %}
+        <form class="well well-small form-horizontal" action="{{ path('login_check') }}" method="POST">
+            {{ form_errors(form) }}
+
+            <fieldset>
+                {{ form_rest(form) }}
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{{ icon('signin') }}{{ 'Login'|trans }}</button>
+            </div>
+        </form>
+    {% endblock %}
+{% endembed %}
+{% endblock %}

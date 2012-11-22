@@ -8,6 +8,11 @@
 /behat.yml
 /build/Sami
 
+/src/Model/Base
+/src/Model/Map
+/src/Model/**/Base
+/src/Model/**/Map
+
 /web/*.php
 !/web/app.php
 !/web/app_test.php

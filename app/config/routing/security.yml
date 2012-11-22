@@ -1,0 +1,10 @@
+login:
+    pattern: '/login'
+    defaults:
+        _controller: 'controller.security:login'
+
+login_check:
+    pattern: '/login_check'
+
+logout:
+    pattern: '/logout'
