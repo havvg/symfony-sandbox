@@ -1,0 +1,20 @@
+default:
+    formatter:
+        name: progress
+
+    context:
+        parameters:
+            javascript_session: selenium2
+
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: 'http://sandbox.localdomain/app_test.php'
+            default_session: symfony2
+            browser_name: chrome
+            selenium2: ~
+
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env: test
+                debug: true
