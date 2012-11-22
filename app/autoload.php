@@ -15,7 +15,6 @@ $loader->registerNamespaces(array(
     'Gaufrette'        => __DIR__.'/../vendor/Gaufrette/src',
     'Knp\Menu'         => __DIR__.'/../vendor/KnpMenu/src',
     'Knp\Component'    => __DIR__.'/../vendor/knp-components/src',
-    'Buzz'             => __DIR__.'/../vendor/Buzz/lib',
     'Imagine'          => __DIR__.'/../vendor/Imagine/lib',
 
     // Behat
