@@ -90,11 +90,26 @@ class AppKernel extends Kernel
          * Load environment specific configuration.
          */
         $envConfigDir = $configDir.'/environments/'.$this->getEnvironment();
+
+        /*
+         * Load all environment specific bundle configuration files.
+         */
+        if (is_dir($envConfigDir.'/bundles')) {
+            $envBundles = Finder::create()
+                ->files()
+                ->name('*.yml')
+                ->in($envConfigDir.'/bundles')
+            ;
+            foreach ($envBundles as $eachFile) {
+                $loader->load($eachFile->getRealPath());
+            }
+        }
+
         $loader->load($envConfigDir.'/parameters.yml');
         $loader->load($envConfigDir.'/config.yml');
 
         /*
-         * Load optional local environment-specific modifications.
+         * Load optional local environment specific modifications.
          */
         if (file_exists($envConfigDir.'/local.yml')) {
             $loader->load($envConfigDir.'/local.yml');
