@@ -19,7 +19,7 @@ abstract class Kernel extends BaseKernel
         if (is_dir($extensionDir)) {
             $extensionFiles = Finder::create()
                 ->files()
-                ->name('Extension.php')
+                ->name('*Extension.php')
                 ->in($extensionDir)
             ;
 

@@ -1,5 +1,0 @@
-services:
-    form.type_extension.autocomplete:
-        class: Form\Extension\AutocompleteExtension
-        tags:
-            - { name: 'form.type_extension', alias: 'form' }
