@@ -2,6 +2,8 @@
 
 namespace HttpKernel;
 
+use Havvg\Bundle\DRYBundle\Kernel\ContainerConfigurationRegistry;
+
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
@@ -55,114 +57,7 @@ abstract class Kernel extends BaseKernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $configDir = $this->getRootDir().'/config';
-
-        /*
-         * Load all globally defined configuration files.
-         */
-        $global = Finder::create()
-            ->files()
-            ->name('*.yml')
-            ->in($configDir)
-            ->depth('< 1')
-        ;
-        /* @var $eachFile \SplFileInfo */
-        foreach ($global as $eachFile) {
-            $loader->load($eachFile->getRealPath());
-        }
-
-        /*
-         * Load all bundle specific configuration files.
-         */
-        $bundles = Finder::create()
-            ->files()
-            ->name('*.yml')
-            ->in($configDir.'/bundles')
-        ;
-        foreach ($bundles as $eachFile) {
-            $loader->load($eachFile->getRealPath());
-        }
-
-        if (is_dir($configDir.'/extensions')) {
-            /*
-             * Load all extension specific configuration files.
-             */
-            $extensions = Finder::create()
-                ->files()
-                ->name('*.yml')
-                ->in($configDir.'/extensions')
-            ;
-            foreach ($extensions as $eachFile) {
-                $loader->load($eachFile->getRealPath());
-            }
-        }
-
-        /*
-         * Load all configuration files defining services.
-         */
-        $services = Finder::create()
-            ->files()
-            ->name('*.yml')
-            ->in($configDir.'/services')
-        ;
-        foreach ($services as $eachFile) {
-            $loader->load($eachFile->getRealPath());
-        }
-
-        /*
-         * Populate configuration with global defaults.
-         */
-        $defaultEnv = Finder::create()
-            ->files()
-            ->name('*.yml')
-            ->in($configDir.'/environments')
-            ->depth('< 1')
-        ;
-        foreach ($defaultEnv as $eachFile) {
-            $loader->load($eachFile->getRealPath());
-        }
-
-        /*
-         * Load environment specific configuration.
-         */
-        $envConfigDir = $configDir.'/environments/'.$this->getEnvironment();
-
-        /*
-         * Load all environment specific bundle configuration files.
-         */
-        if (is_dir($envConfigDir.'/bundles')) {
-            $envBundles = Finder::create()
-                ->files()
-                ->name('*.yml')
-                ->in($envConfigDir.'/bundles')
-            ;
-            foreach ($envBundles as $eachFile) {
-                $loader->load($eachFile->getRealPath());
-            }
-        }
-
-        /*
-         * Load all environment specific extension configuration files.
-         */
-        if (is_dir($envConfigDir.'/extensions')) {
-            $envExtensions = Finder::create()
-                ->files()
-                ->name('*.yml')
-                ->in($envConfigDir.'/extensions')
-            ;
-            foreach ($envExtensions as $eachFile) {
-                $loader->load($eachFile->getRealPath());
-            }
-        }
-
-        $loader->load($envConfigDir.'/parameters.yml');
-        $loader->load($envConfigDir.'/config.yml');
-
-        /*
-         * Load optional local environment specific modifications.
-         */
-        if (file_exists($envConfigDir.'/local.yml')) {
-            $loader->load($envConfigDir.'/local.yml');
-        }
+        $registry = new ContainerConfigurationRegistry($this);
+        $registry->register($loader);
     }
 }
