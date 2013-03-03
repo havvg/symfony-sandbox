@@ -2,6 +2,7 @@
 
 namespace Console;
 
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application as BaseApplication;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\DependencyInjection\Container;
@@ -55,7 +56,13 @@ class Application extends BaseApplication
             if (class_exists($fqcn)) {
                 $reflection = new \ReflectionClass($fqcn);
                 if ($reflection->isInstantiable()) {
-                    $commands[] = $reflection->newInstance();
+                    $command = $reflection->newInstance();
+
+                    if ($command instanceof ContainerAwareCommand) {
+                        $command->setContainer($container);
+                    }
+
+                    $commands[] = $command;
                 }
             }
         }
