@@ -1,4 +1,4 @@
-{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+{% from ':macros:flash.html.twig' import session_flash %}
 <!DOCTYPE html>
 {% spaceless %}
 <html>
@@ -42,7 +42,7 @@
     </head>
     <body>
         {% block body %}
-            {% block navbar %}{{ mopa_bootstrap_navbar('frontendNavbar') }}{% endblock %}
+            {% block navbar %}{{ knp_menu_render('main', { 'currentClass': 'active', 'template': ':Menu:navbar.html.twig' }) }}{% endblock %}
 
             {% block container %}
                 <section class="container-fluid">

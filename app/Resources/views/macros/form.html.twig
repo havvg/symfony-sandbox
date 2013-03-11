@@ -1,0 +1,20 @@
+{% macro form_open(form, action = false, class = 'form-horizontal well', method = 'POST', form_attr = {}) %}
+{% from ':macros:html.html.twig' import attr %}
+{% spaceless %}
+    {% if not action %}
+        {% set action = path(app.request.attributes.get('_route'), app.request.query.all|merge(app.request.attributes.get('_route_params'))) %}
+    {% endif %}
+
+    <form{% if class %} class="{{ class|trim }}"{% endif %} action="{{ action|trim }}" method="{{ method }}" {{ form_enctype(form) }} {{ attr(form_attr) }}>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro form_close(form, with_rest = true) %}
+{% spaceless %}
+    {% if with_rest %}
+        {{ form_rest(form) }}
+    {% endif %}
+
+    </form>
+{% endspaceless %}
+{% endmacro %}

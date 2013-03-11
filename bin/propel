@@ -1,8 +1,1 @@
-#!/usr/bin/env php
-<?php
-
-set_time_limit(0);
-
-require_once __DIR__.'/../app/bootstrap.php.cache';
-
-include __DIR__.'/../vendor/Propel2/bin/propel.php';
+../vendor/propel/propel/bin/propel

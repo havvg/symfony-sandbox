@@ -1,0 +1,1 @@
+{% macro attr(attributes = []) %}{% spaceless %}{% for name, value in attributes %}{{ name|trim }}="{{ value|trim }}" {% endfor %}{% endspaceless %}{% endmacro %}

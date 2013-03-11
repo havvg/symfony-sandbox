@@ -1,0 +1,3 @@
+knp_menu:
+    templating: false
+    default_renderer: 'twig'

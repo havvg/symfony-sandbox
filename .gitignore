@@ -1,21 +1,19 @@
-/app/cache/*
-/app/logs/*
-
+/app/bootstrap.php.cache
+/app/cache
 /app/config/environments/*/local.yml
-
-/behat.yml
-/build/Sami
+/app/logs
+/propel/sql
 
 /src/Model/Base
 /src/Model/Map
 /src/Model/**/Base
 /src/Model/**/Map
 
+/vendor
+
 /web/*.php
 !/web/app.php
 !/web/app_test.php
+/web/bundles
 /web/css
 /web/js
-/web/bundles
-
-/vendor/*

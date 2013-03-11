@@ -1,0 +1,25 @@
+{% macro flash(type = 'info', message, close = true, use_raw = false) %}
+{% spaceless %}
+    <div class="alert alert-{{ type }} alert-block">
+        {% if close %}
+            <a class="close" href="#">×</a>
+        {% endif %}
+        <p>{{ use_raw ? message|raw : message }}</p>
+    </div>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro session_flash(type = false, close = true, use_raw = false) %}
+    {% set types = ['error', 'warning', 'info', 'success'] %}
+    {% if type %}
+        {% set types = [ type ] %}
+    {% endif %}
+
+    {% for type in types %}
+        {% if app.session.flashbag.has(type) %}
+            {% for message in app.session.flashbag.get(type) %}
+                {{ _self.flash(type, message, close, use_raw) }}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

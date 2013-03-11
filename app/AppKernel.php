@@ -14,12 +14,14 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            new Havvg\Bundle\DRYBundle\HavvgDRYBundle(),
+
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
-            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Havvg\Bundle\DRYBundle\HavvgDRYBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test', 'test_functional'))) {

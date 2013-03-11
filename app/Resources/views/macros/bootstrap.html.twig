@@ -1,0 +1,52 @@
+{% macro badge(text, type = false, use_raw = false) %}
+{% spaceless %}
+    {% set class = 'badge' %}
+    {% if type %}
+        {% set class = class ~ ' badge-'~type %}
+    {% endif %}
+
+    <span class="{{ class|trim }}">{{ use_raw ? text|raw : text }}</span>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro label(text, type = false, use_raw = false, block = false) %}
+{% spaceless %}
+    {% set tag = block ? 'div' : 'span' %}
+    {% set class = 'label' %}
+    {% if type %}
+        {% set class = class ~ ' label-'~type %}
+    {% endif %}
+
+    <{{ tag }} class="{{ class|trim }}">{{ use_raw ? text|raw : text }}</{{ tag }}>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro progress_bar(class = '', width = 0) %}
+{% spaceless %}
+    <div class="progress {{ class|trim }}">
+        <div class="bar" style="width: {{ width }}%;"></div>
+    </div>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro icon(name, inverted = false, class = '') %}
+{% spaceless %}
+    {% set class = 'icon-'~name~' '~class %}
+    {% if inverted %}
+        {% set class = 'icon-white '~class %}
+    {% endif %}
+    <i class="{{ class|trim }}"></i>
+{% endspaceless %}
+{% endmacro %}
+
+{% macro help_popover(title, content, attributes = {}) %}
+    {% from ':macros:html.html.twig' import attr %}
+
+    {% set attributes = attributes|merge({
+        'data-title': title,
+        'data-content': content,
+        'class': attributes.class|default('') ~ ' help'
+    }) %}
+
+    <a data-popover {{ attr(attributes) }}>{{ _self.icon('question-sign') }}</a>
+{% endmacro %}

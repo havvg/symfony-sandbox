@@ -2,19 +2,21 @@
 
 {% block content_layout %}
 {% embed ':Layout:content_center_no_sidebar.html.twig' %}
-    {% from 'MopaBootstrapBundle::icons.html.twig' import icon %}
+    {% from ':macros:bootstrap.html.twig' import icon %}
+    {% from ':macros:form.html.twig' import form_open, form_close %}
+
     {% block content %}
-        <form class="well well-small form-horizontal" action="{{ path('login_check') }}" method="POST">
+        {{ form_open(form, path('login_check')) }}
             {{ form_errors(form) }}
 
             <fieldset>
-                {{ form_rest(form) }}
+                {{ form_row(form) }}
             </fieldset>
 
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">{{ icon('signin') }}{{ 'Login'|trans }}</button>
+                <button type="submit" class="btn btn-primary">{{ icon('signin') }} {{ 'Login'|trans }}</button>
             </div>
-        </form>
+        {{ form_close(form) }}
     {% endblock %}
 {% endembed %}
 {% endblock %}

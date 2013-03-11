@@ -2,7 +2,7 @@
 
 {% macro widget_prototype(widget, remove_text) %}
 {% spaceless %}
-    {% from 'MopaBootstrapBundle::icons.html.twig' import icon %}
+    {% from ':macros:bootstrap.html.twig' import icon %}
 
     {% if widget.get('prototype') %}
         {% set form = widget.get('prototype') %}

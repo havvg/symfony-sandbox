@@ -1,33 +1,14 @@
 services:
-    navbar:
-        class: '%mopa_bootstrap.navbar.generic%'
-        scope: 'request'
-        arguments:
-            -
-                leftmenu: '@navbar.menu.main'
-            - [ ]
-            -
-                title: "havvg's Symfony2 sandbox"
-                titleRoute: 'welcome'
-                fixedTop: true
-                isFluid: true
-        tags:
-            - { name: 'mopa_bootstrap.navbar', alias: 'frontendNavbar' }
-
-    navbar.builder:
-        class: Menu\NavbarMenuBuilder
-        scope: 'request'
+    menu.menu_builder:
+        class: Menu\MenuBuilder
         arguments:
             - '@knp_menu.factory'
             - '@security.context'
             - '@translator'
 
-    navbar.menu.main:
+    navbar.main_menu:
         class: Knp\Menu\MenuItem
-        scope: 'request'
-        factory_service: 'navbar.builder'
+        factory_service: 'menu.menu_builder'
         factory_method: 'createMainMenu'
-        arguments:
-            - '@request'
         tags:
             - { name: 'knp_menu.menu', alias: 'main' }

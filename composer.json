@@ -1,0 +1,133 @@
+{
+    "name": "havvg/symfony-sandbox",
+    "description": "My little Symfony2 sandbox with huge load of crap in it :-)",
+    "authors": [
+        {
+            "name": "Toni Uebernickel",
+            "email": "tuebernickel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
+    },
+    "require": {
+        "php": "~5.4",
+
+        "symfony/symfony": "~2.2.0",
+        "symfony/framework-bundle": "~2.2.0",
+        "symfony/monolog-bundle": "~2.2",
+        "symfony/swiftmailer-bundle": "~2.2",
+        "symfony/assetic-bundle": "~2.1",
+        "sensio/framework-extra-bundle": "~2.2",
+        "sensio/distribution-bundle": "~2.2",
+
+        "twig/twig": ">=1.12.2,<2.0",
+        "twig/extensions": "~1.0",
+
+        "havvg/dry-bundle": ">=1.0.2,<2.0",
+
+        "knplabs/knp-gaufrette-bundle": "~0.1",
+        "knplabs/knp-menu": "dev-master",
+        "knplabs/knp-menu-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "~2.3",
+
+        "craue/formflow-bundle": "~1.1",
+
+        "kriswallsmith/assetic": "1.1.*@dev",
+
+        "propel/propel": "dev-master"
+    },
+    "require-dev": {
+        "twitter/bootstrap": "~2.3",
+        "FortAwesome/Font-Awesome": "dev-master",
+        "documentcloud/underscore": "dev-master#87cac5bd057ceafd6f779b1df33de61ca21b5e1d",
+        "documentcloud/backbone": "dev-master#18b445e8a0eaf438dd244121e24a2a6041c62052",
+
+        "behat/behat": "~2.4",
+        "behat/mink": "~1.4",
+        "behat/mink-extension": "~1.0",
+        "behat/mink-browserkit-driver": "~1.0",
+        "behat/symfony2-extension": "~1.0",
+        "behat/mink-selenium2-driver": "~1.0",
+        "behat/common-contexts": "dev-master",
+
+        "phpunit/phpunit": "~3.7"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "propel/propel",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/propelorm/Propel2.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "require": {
+                },
+                "autoload": {
+                    "psr-0": {
+                        "Propel": "src/"
+                    }
+                },
+                "bin": [
+                    "bin/propel"
+                ]
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "documentcloud/underscore",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/documentcloud/underscore.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "documentcloud/backbone",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/documentcloud/backbone.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "FortAwesome/Font-Awesome",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/FortAwesome/Font-Awesome.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ]
+}

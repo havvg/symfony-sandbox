@@ -15,7 +15,7 @@ class AutocompleteExtension extends AbstractTypeExtension
             $options['autocomplete'] = 'off';
         }
 
-        // It doesn't hurt even it will be left empty.
+        // It doesn't hurt even if it will be left empty.
         if (empty($view->vars['attr'])) {
             $view->vars['attr'] = array();
         }

@@ -1,10 +1,12 @@
 {% extends '::base.html.twig' %}
 
+{% from ':macros:form.html.twig' import form_open, form_close %}
+
 {% trans_default_domain "registration" %}
 
 {% block content_layout %}
 <div class="row-fluid">
-    <form class="form-horizontal well well-small span6 offset3" action="{{ path('registration') }}" method="POST" novalidate>
+    {{ form_open(form, path('registration'), 'form-horizontal well well-small span6 offset3') }}
         {{ form_errors(form) }}
 
         <fieldset>
@@ -32,6 +34,6 @@
         <div class="form-actions">
             {% include ':Registration:buttons.html.twig' %}
         </div>
-    </form>
+    {{ form_close(form) }}
 </div>
 {% endblock %}

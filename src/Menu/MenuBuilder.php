@@ -3,12 +3,13 @@
 namespace Menu;
 
 use Knp\Menu\FactoryInterface;
-use Mopa\Bundle\BootstrapBundle\Navbar\AbstractNavbarMenuBuilder;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
+class MenuBuilder
 {
+    protected $factory;
+
     protected $securityContext;
     protected $isLoggedIn;
     protected $username;
@@ -16,7 +17,7 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
 
     public function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext, TranslatorInterface $translator)
     {
-        parent::__construct($factory);
+        $this->factory = $factory;
 
         $this->securityContext = $securityContext;
         $this->isLoggedIn = $this->securityContext->isGranted('IS_AUTHENTICATED_FULLY');
